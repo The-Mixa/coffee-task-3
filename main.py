@@ -7,7 +7,7 @@ from PyQt5 import  QtCore
 class Coffee(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setupUI(self)
+        self.setupUi(self)
         self.con = sqlite3.connect('coffee.sqlite')
         self.load_table()
         self.addButton.clicked.connect(self.add_coffee_click)
@@ -40,7 +40,7 @@ class Coffee(QMainWindow):
         self.tableWidget.setRowCount(len(result))
         self.tableWidget.setColumnCount(len(result[0]))
         titles = ['id', 'название', 'степень обжарки', 'молотый/в зёрнах', 'описание вкуса', 'цена', 'объём']
-        self.tableWidget.setVerticalHeaderLabels(titles)
+        self.tableWidget.setHorizontalHeaderLabels(titles)
         for i, elem in enumerate(result):
             for j, val in enumerate(elem):
                 self.tableWidget.setItem(i, j, QTableWidgetItem(str(val)))
