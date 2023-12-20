@@ -1,10 +1,12 @@
 import sqlite3
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QTableWidget, QPushButton, QLabel, QLineEdit
-from PyQt5 import  QtCore
+from PyQt5 import QtCore
+from main_design import Ui_Form_Main
+from addEditCoffeeForm import Ui_Form
 
 
-class Coffee(QMainWindow):
+class Coffee(QMainWindow, Ui_Form_Main):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -12,21 +14,6 @@ class Coffee(QMainWindow):
         self.load_table()
         self.addButton.clicked.connect(self.add_coffee_click)
         self.tableWidget.cellChanged.connect(self.cell_canged)
-
-    def setupUi(self, Form):
-        Form.setObjectName("Form")
-        Form.resize(565, 415)
-        self.tableWidget = QTableWidget(Form)
-        self.tableWidget.setGeometry(QtCore.QRect(20, 40, 531, 381))
-        self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(0)
-        self.tableWidget.setRowCount(0)
-        self.addButton = QPushButton(Form)
-        self.addButton.setGeometry(QtCore.QRect(20, 10, 75, 23))
-        self.addButton.setObjectName("addButton")
-
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
@@ -74,57 +61,11 @@ class Coffee(QMainWindow):
         self.con.commit()
 
 
-class AddWidget(QMainWindow):
+class AddWidget(QMainWindow, Ui_Form):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setupUi(self)
         self.doneButton.clicked.connect(self.done)
-
-    def setupUi(self, Form):
-        Form.setObjectName("Form")
-        Form.resize(400, 220)
-        self.title = QLineEdit(Form)
-        self.title.setGeometry(QtCore.QRect(120, 10, 271, 20))
-        self.title.setObjectName("title")
-        self.roastingLevel = QLineEdit(Form)
-        self.roastingLevel.setGeometry(QtCore.QRect(120, 40, 271, 20))
-        self.roastingLevel.setObjectName("roastingLevel")
-        self.ground = QLineEdit(Form)
-        self.ground.setGeometry(QtCore.QRect(120, 70, 271, 20))
-        self.ground.setObjectName("ground")
-        self.tasteDescription = QLineEdit(Form)
-        self.tasteDescription.setGeometry(QtCore.QRect(120, 100, 271, 20))
-        self.tasteDescription.setObjectName("tasteDescription")
-        self.price = QLineEdit(Form)
-        self.price.setGeometry(QtCore.QRect(120, 130, 271, 20))
-        self.price.setObjectName("price")
-        self.volume = QLineEdit(Form)
-        self.volume.setGeometry(QtCore.QRect(120, 160, 271, 21))
-        self.volume.setObjectName("volume")
-        self.label = QLabel(Form)
-        self.label.setGeometry(QtCore.QRect(10, 10, 101, 20))
-        self.label.setObjectName("label")
-        self.label_2 = QLabel(Form)
-        self.label_2.setGeometry(QtCore.QRect(10, 40, 101, 20))
-        self.label_2.setObjectName("label_2")
-        self.label_3 = QLabel(Form)
-        self.label_3.setGeometry(QtCore.QRect(10, 70, 101, 20))
-        self.label_3.setObjectName("label_3")
-        self.label_4 = QLabel(Form)
-        self.label_4.setGeometry(QtCore.QRect(10, 100, 101, 20))
-        self.label_4.setObjectName("label_4")
-        self.label_5 = QLabel(Form)
-        self.label_5.setGeometry(QtCore.QRect(10, 130, 101, 20))
-        self.label_5.setObjectName("label_5")
-        self.label_6 = QLabel(Form)
-        self.label_6.setGeometry(QtCore.QRect(10, 160, 101, 20))
-        self.label_6.setObjectName("label_6")
-        self.doneButton = QPushButton(Form)
-        self.doneButton.setGeometry(QtCore.QRect(10, 190, 381, 23))
-        self.doneButton.setObjectName("doneButton")
-
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
